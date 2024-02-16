@@ -29,6 +29,7 @@ import com.adammcneilly.bloom.theme.LocalContentColor
 import com.adammcneilly.bloom.theme.contentColorFor
 
 @Composable
+@Suppress("LongMethod")
 fun WelcomeScreen(
     onLoginClicked: () -> Unit,
     modifier: Modifier = Modifier,
