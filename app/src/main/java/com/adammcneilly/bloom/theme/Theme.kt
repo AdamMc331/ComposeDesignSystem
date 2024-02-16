@@ -49,6 +49,10 @@ val LocalTypography = staticCompositionLocalOf {
     )
 }
 
+val LocalContentColor = staticCompositionLocalOf {
+    Color.Unspecified
+}
+
 @Composable
 fun BloomTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -66,11 +70,14 @@ fun BloomTheme(
 
     val typography = defaultTypography
 
+    val defaultContentColor = colors.onBackground
+
     CompositionLocalProvider(
         LocalColors provides colors,
         LocalElevation provides elevation,
         LocalShapes provides shapes,
         LocalTypography provides typography,
+        LocalContentColor provides defaultContentColor,
         content = content,
     )
 }

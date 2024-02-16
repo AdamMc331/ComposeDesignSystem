@@ -26,6 +26,16 @@ data class BloomColors(
     val onSurface: Color,
 )
 
+fun BloomColors.contentColorFor(containerColor: Color): Color {
+    return when (containerColor) {
+        primary -> onPrimary
+        secondary -> onSecondary
+        background -> onBackground
+        surface -> onSurface
+        else -> Color.Unspecified
+    }
+}
+
 val lightColors: BloomColors = BloomColors(
     primary = Pink100,
     onPrimary = Gray,
