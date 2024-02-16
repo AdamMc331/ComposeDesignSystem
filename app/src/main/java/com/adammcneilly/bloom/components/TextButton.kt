@@ -14,30 +14,30 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.bloom.theme.BloomTheme
-import com.adammcneilly.bloom.theme.contentColorFor
+import com.adammcneilly.bloom.theme.LocalContentColor
 
-data class PrimaryButtonColors(
+data class TextButtonColors(
     val containerColor: Color,
     val contentColor: Color,
 )
 
 @Composable
-fun defaultPrimaryButtonColors(
-    containerColor: Color = BloomTheme.colors.primary,
-    contentColor: Color = BloomTheme.colors.contentColorFor(containerColor),
-): PrimaryButtonColors {
-    return PrimaryButtonColors(
+fun defaultTextButtonColors(
+    containerColor: Color = Color.Transparent,
+    contentColor: Color = LocalContentColor.current,
+): TextButtonColors {
+    return TextButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
     )
 }
 
 @Composable
-fun PrimaryButton(
+fun TextButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    colors: PrimaryButtonColors = defaultPrimaryButtonColors(),
+    colors: TextButtonColors = defaultTextButtonColors(),
     shape: Shape = BloomTheme.shapes.medium,
 ) {
     Box(
@@ -66,15 +66,19 @@ fun PrimaryButton(
 @Preview(
     name = "Day Mode",
     uiMode = Configuration.UI_MODE_NIGHT_NO,
+    showBackground = true,
+    backgroundColor = 0xFFFFFFFF,
 )
 @Preview(
     name = "Night Mode",
     uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    backgroundColor = 0xFF000000,
 )
 @Composable
-private fun PrimaryButtonPreview() {
+private fun TextButtonPreview() {
     BloomTheme {
-        PrimaryButton(
+        TextButton(
             text = "Primary Button",
             onClick = { /*TODO*/ },
             modifier = Modifier
