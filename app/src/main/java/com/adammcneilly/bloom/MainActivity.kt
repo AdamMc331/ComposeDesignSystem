@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
+import com.adammcneilly.bloom.theme.BloomTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +20,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             ConfigureTransparentSystemBars()
 
-            Greeting("Android")
+            BloomTheme {
+                WelcomeScreen(
+                    onLoginClicked = { /*TODO*/ },
+                )
+            }
         }
     }
 
@@ -53,9 +57,4 @@ class MainActivity : ComponentActivity() {
             onDispose { }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String) {
-    BasicText(text = "Hello $name!")
 }
